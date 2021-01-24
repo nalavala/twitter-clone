@@ -1,3 +1,12 @@
+## Technologies
+
+**Programming Language** : Node JS
+
+**Database** : Mongo DB
+
+
+## Data models
+
 ### Users (for authentication)
 ```JSON
 {
@@ -45,8 +54,8 @@
 }
 ```
 
-## Endpoints :
----
+## Endpoints
+
 ### Authentication:
 
 `POST /api/auth/login`
