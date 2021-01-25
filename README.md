@@ -193,6 +193,9 @@ Example response body:
 ```
 
 ### Get Users liked the post
+
+*Authentication required*
+
 `GET /api/post/:postId/likes`
 ```JSON
 {
@@ -216,6 +219,9 @@ Example response body:
 
 ### Get followers 
 `GET /api/followers`
+
+*Authentication required*
+
 ```JSON
 {
     "data" : {
