@@ -14,6 +14,7 @@
     "email": "jake@jake.jake",
     "username": "jake",
     "fullName" : "jake jake",
+    "slug" : "jake@jake.jake_jake",
     "image": "url",
     "phone": 12344,
     "createdAt" : "2016-02-18T03:22:56.637Z"
@@ -71,10 +72,11 @@ Example request body:
 ```JSON
 {
   "user": {
+    "id" : "ubbtiOf0iU8yq_QjbqN0j".
     "email": "jake@jake.jake",
     "token": "jwt.token.here",
     "username": "jake",
-    "image": null
+    "image": null #if present
   }
 }
 ```
