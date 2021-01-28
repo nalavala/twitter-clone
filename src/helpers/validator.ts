@@ -15,8 +15,6 @@ const validate = (schema: Joi.ObjectSchema, param: ValidationSource = Validation
             if (!error) {
                 return next()
             }
-            console.log(error);
-            console.log(error?.details)
             next(new BadRequestError(error?.details[0].message.replace(/['"]+/g, '') || ""));
         } catch (err) {
             next(err);

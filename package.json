@@ -6,14 +6,16 @@
   "scripts": {
     "build": "npm run clean && npm run build-ts",
     "start": "npm run build && npm run serve",
-    "serve": "node -r dotenv/config build/server.js",
+    "serve": "node -r dotenv/config build/server.js | ./node_modules/.bin/bunyan",
     "clean": "rimraf ./build",
     "build-ts": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bunyan": "^1.8.6",
     "bcrypt": "^5.0.0",
+    "bunyan": "^1.8.15",
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
