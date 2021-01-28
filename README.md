@@ -72,11 +72,11 @@ Example request body:
 ```JSON
 {
   "user": {
-    "id" : "ubbtiOf0iU8yq_QjbqN0j".
+    "id" : "ubbtiOf0iU8yq_QjbqN0j",
     "email": "jake@jake.jake",
     "token": "jwt.token.here",
     "username": "jake",
-    "image": null #if present
+    "image": null 
   }
 }
 ```
