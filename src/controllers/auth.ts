@@ -13,14 +13,11 @@ export const login = asyncHandler(async (req, res, next) => {
   }
   
   const match = await matchPassword(user.hashPassword, password);
-  console.log(match)
   if (!match) {
     throw new AuthenticationFailedError("Invalid credentials");
   }
 
-  const token = await createToken(user)
-  console.log(token)
-
+  const token = await createToken(user);
   res.json({
     user: {
       id: user.id,
