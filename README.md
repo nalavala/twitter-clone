@@ -195,6 +195,9 @@ Example response body:
 ```
 
 ### Get Users liked the post
+
+*Authentication required*
+
 `GET /api/post/:postId/likes`
 ```JSON
 {
@@ -218,6 +221,9 @@ Example response body:
 
 ### Get followers 
 `GET /api/followers`
+
+*Authentication required*
+
 ```JSON
 {
     "data" : {
@@ -237,6 +243,14 @@ Example response body:
     }
 }
 ```
+
+## How to build and run this project
+* Install
+    * Install MongoDB on your local.
+    * create **.env** file and copy content from env.example to **.env** file.
+    * Change the `DB` to **`mongodb://localhost:27017/twitter-clone`** in **.env** file.
+    * Execute `npm start`.
+    * Go postman and checkout the api's
 
 
 
