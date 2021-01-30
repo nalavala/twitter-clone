@@ -1,3 +1,5 @@
+import donenv from 'dotenv'
+donenv.config()
 import config from './property';
 import app from './app';
 import logger from './core/logger';

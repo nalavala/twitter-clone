@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && npm run build-ts",
     "start": "npm run build && npm run serve",
-    "serve": "node -r dotenv/config build/server.js | ./node_modules/.bin/bunyan",
+    "serve": "node -r dotenv/config --prof build/server.js | ./node_modules/.bin/bunyan",
     "clean": "rimraf ./build",
     "build-ts": "tsc"
   },

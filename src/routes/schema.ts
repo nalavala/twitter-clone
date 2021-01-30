@@ -18,5 +18,10 @@ export default {
                 .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
             email: Joi.string().email({ tlds: { allow: false } }),
         }
+    ),
+    postTweet: Joi.object(
+        {
+            content : Joi.string()
+        }
     )
 }

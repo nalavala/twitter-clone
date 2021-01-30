@@ -3,6 +3,7 @@ import User, { UserModel } from "./../database/model/user";
 import UserRepo from './../database/repository/userRepo';
 import { BadRequestError } from './../core/ApiError';
 import asyncHandler from './../helpers/asynHandler';
+import { NextFunction } from "express";
 const { randomId } = require("./../utils/random");
 
 export const createUser = asyncHandler(async (req: any, res: any, next: any) => {
@@ -12,10 +13,8 @@ export const createUser = asyncHandler(async (req: any, res: any, next: any) => 
   const existingUser = await UserRepo.getByEmail(email);
   if (existingUser) throw new BadRequestError('User already registered');
   const encryptedPassword = await hashPassword(password);
-  const id = randomId();
   const newUser: User = {
-    id: id,
-    slug: req.body.email + "_" + id,
+    slug: req.body.email,
     username: req.body.username,
     email: req.body.email,
     phone: req.body.phone,
@@ -24,12 +23,33 @@ export const createUser = asyncHandler(async (req: any, res: any, next: any) => 
   } as User;
 
   const createdUser = await UserRepo.create(newUser);
-  createdUser.id = createdUser._id;
-  createdUser._id = undefined;
-  res.sendStatus(200);
+  // TODO : sanitize user object before sending to user
+  res.status(200).json({
+    data: createdUser
+  });
 
 });
 
+
+export const followUser = asyncHandler(async (req: any, res: any, next: NextFunction) => {
+
+  const followed = req.params.userId;
+  const follower = req.userId;
+  if (followed !== follower) {
+    await UserRepo.followUser(followed, follower);
+  }
+  res.sendStatus(200);
+})
+
+export const unfollowUser = asyncHandler(async (req: any, res: any, next: NextFunction) => {
+
+  const followed = req.params.userId;
+  const follower = req.userId;
+  if (followed !== follower) {
+    await UserRepo.unfollowUser(followed, follower);
+  }
+  res.sendStatus(200);
+})
 
 
 export const testAuth = asyncHandler(async (req: any, res: any, next: any) => {

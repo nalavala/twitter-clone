@@ -4,22 +4,18 @@ export const DOCUMENT_NAME = 'User';
 export const COLLECTION_NAME = 'users';
 
 export default interface User extends Document {
-    id:string
+    id: string
     fullName?: string,
     image?: string,
-    username?:string
+    username?: string
     phone?: number
     email: string,
-    slug:string,
+    slug: string,
     hashPassword: string;
 }
 
 const userSchema = new Schema(
     {
-        _id: {
-            type: String,
-            alias: "id",
-        },
         slug: {
             type: String,
             required: true,
@@ -43,7 +39,7 @@ const userSchema = new Schema(
         fullName: String,
         image: String,
         phone: Number,
-    }
+    }, { versionKey: false }
 );
 
 export const UserModel = model<User>(DOCUMENT_NAME, userSchema, COLLECTION_NAME);

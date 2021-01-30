@@ -2,6 +2,7 @@ import { promisify } from 'util';
 import config from "./../property";
 import { sign, verify } from 'jsonwebtoken';
 import { InternalServerError, BadTokenError, TokenExpiredError } from './../core/ApiError';
+import logger from './../core/logger';
 
 export default class JWT {
     public static async sign(payload: JwtPayload): Promise<string> {
@@ -12,9 +13,9 @@ export default class JWT {
     public static async verify(token: string): Promise<JwtPayload> {
         try {
             // @ts-ignore
-            return (await promisify(verify)(token, config.jwtSecret)) as JwtPayload;
+            return (await promisify(verify)(token, config.jwtSecret,{ algorithms: ['HS256']})) as JwtPayload;
         } catch (e) {
-            console.error(e);
+            logger.error(e)
             if (e && e.name === 'TokenExpiredError') throw new TokenExpiredError();
             throw new BadTokenError();
         }
