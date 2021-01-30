@@ -49,8 +49,8 @@
 ### Follow
 ```JSON
 {
-    "userId"  : "12324",
-    "followedUserId" : "jake12312"
+    "followedUserId"  : "12324",
+    "followedByUserId" : "jake12312"
 }
 ```
 
@@ -91,6 +91,19 @@ Example request body:
 }
 ```
 Response Status: `200 OK`
+Response body :
+```JSON
+{
+    "data": {
+        "_id": "6014f162335e1820b121bef2",
+        "slug": "povr1de@gmail.com",
+        "username": "revanth",
+        "email": "poojr1de@gmail.com",
+        "hashPassword": "$2b$10$pe43A/sZ0IOsBdz3a.a4c.IadGIJ403ylau22c3Z2CibArRT5lUFq"
+    }
+}
+```
+
 ### Create Post
 
 `POST /api/posts`
@@ -101,6 +114,17 @@ Example request body:
 ```JSON
 {
     "body": "Good Morning",
+}
+```
+Example Request body:
+```JSON
+{
+    "data": {
+        "likes": 4345,
+        "_id": "6014f1f8335e1820b121bef3",
+        "content": "Jkn",
+        "user": "6013d70bf58c8573149fcda7"
+    }
 }
 ```
 Response Status: `200 OK`
